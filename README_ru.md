@@ -1,7 +1,5 @@
-# Standard Go Project Layout
-# Стандартая разметка проекта на Go
+# Стандартая структура проекта на Go
 
-Translations:
 Переводы:
 
 * [한국어 문서](README_ko.md)
@@ -9,12 +7,11 @@ Translations:
 * [Français](README_fr.md)
 * [Русский](README_ru.md)
 
-## Overview
 ## Обзор
 
 This is a basic layout for Go application projects. It's not an official standard defined by the core Go dev team; however, it is a set of common historical and emerging project layout patterns in the Go ecosystem. Some of these patterns are more popular than others. It also has a number of small enhancements along with several supporting directories common to any large enough real world application.
 
-Это базовая разметка (директории, их имена и назначение, скрипты) для проекта приложения, написанного на Go. Она не является официальным стандартом, определённым основной командой разработчиков Go. Однако, она представляет из себя множество общих исторических и формирующихся шаблонов для организации проектов в экосистеме Go. Некоторые из этих шаблонов более популярны, чем другие. Она также содержит некоторое количество маленьких улучшений вместе с директориями, поддерживающими их, достаточно общих для любого большого реального приложения. 
+Это базовая структура для проекта приложения, написанного на Go. Она не является официальным стандартом, определённым основной командой разработчиков Go. Однако, она представляет из себя множество общих исторических и формирующихся шаблонов для организации проектов в экосистеме Go. Некоторые из этих шаблонов более популярны, чем другие. Она также содержит некоторое количество маленьких улучшений вместе с директориями, поддерживающими их, достаточно общих для любого большого реального приложения. 
 
 If you are trying to learn Go or if you are building a PoC or a toy project for yourself this project layout is an overkill. Start with something really simple (a single `main.go` file is more than enough). As your project grows keep in mind that it'll be important to make sure your code is well structured otherwise you'll end up with a messy code with lots of hidden dependencies and global state. When you have more people working on the project you'll need even more structure. That's when it's important to introduce a common way to manage packages/libraries. When you have an open source project or when you know other projects import the code from your project repository that's when it's important to have private (aka `internal`) packages and code. Clone the repository, keep what you need and delete everything else! Just because it's there it doesn't mean you have to use it all. None of these patterns are used in every single project. Even the `vendor` pattern is not universal.
 
@@ -44,7 +41,7 @@ More about naming and organizing packages as well as other code structure recomm
 A Chinese Post about Package-Oriented-Design guidelines and Architecture layer
 * [面向包的设计和架构分层](https://github.com/danceyoung/paper-code/blob/master/package-oriented-design/packageorienteddesign.md)
 
-## Go Directories
+## Каталоги Go
 
 ### `/cmd`
 
@@ -82,7 +79,7 @@ Don't commit your application dependencies if you are building a library.
 
 Note that since [`1.13`](https://golang.org/doc/go1.13#modules) Go also enabled the module proxy feature (using [`https://proxy.golang.org`](https://proxy.golang.org) as their module proxy server by default). Read more about it [`here`](https://blog.golang.org/module-mirror-launch) to see if it fits all of your requirements and constraints. If it does, then you won't need the `vendor` directory at all.
 
-## Service Application Directories
+## Каталоги приложения-сервиса
 
 ### `/api`
 
@@ -90,13 +87,13 @@ OpenAPI/Swagger specs, JSON schema files, protocol definition files.
 
 See the [`/api`](api/README.md) directory for examples.
 
-## Web Application Directories
+## Каталоги веб-приложения
 
 ### `/web`
 
 Web application specific components: static web assets, server side templates and SPAs.
 
-## Common Application Directories
+## Общие для всех приложений каталоги
 
 ### `/configs`
 
@@ -134,7 +131,7 @@ Additional external test apps and test data. Feel free to structure the `/test` 
 
 See the [`/test`](test/README.md) directory for examples.
 
-## Other Directories
+## Другие каталоги
 
 ### `/docs`
 
@@ -172,7 +169,7 @@ This is the place to put your project's website data if you are not using GitHub
 
 See the [`/website`](website/README.md) directory for examples.
 
-## Directories You Shouldn't Have
+## Каталоги, которые лучше не использовать
 
 ### `/src`
 
@@ -181,7 +178,8 @@ Some Go projects do have a `src` folder, but it usually happens when the devs ca
 Don't confuse the project level `/src` directory with the `/src` directory Go uses for its workspaces as described in [`How to Write Go Code`](https://golang.org/doc/code.html). The `$GOPATH` environment variable points to your (current) workspace (by default it points to `$HOME/go` on non-windows systems). This workspace includes the top level `/pkg`, `/bin` and `/src` directories. Your actual project ends up being a sub-directory under `/src`, so if you have the `/src` directory in your project the project path will look like this: `/some/path/to/workspace/src/your_project/src/your_code.go`. Note that with Go 1.11 it's possible to have your project outside of your `GOPATH`, but it still doesn't mean it's a good idea to use this layout pattern.
 
 
-## Badges
+//## Badges
+## Знаки
 
 * [Go Report Card](https://goreportcard.com/) - It will scan your code with `gofmt`, `go vet`, `gocyclo`, `golint`, `ineffassign`, `license` and `misspell`. Replace `github.com/golang-standards/project-layout` with your project reference.
 
@@ -196,6 +194,6 @@ Don't confuse the project level `/src` directory with the `/src` directory Go us
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/golang-standards/project-layout)](https://pkg.go.dev/github.com/golang-standards/project-layout)
 [![Release](https://img.shields.io/github/release/golang-standards/project-layout.svg?style=flat-square)](https://github.com/golang-standards/project-layout/releases/latest)
 
-## Notes
+## Заметки
 
 A more opinionated project template with sample/reusable configs, scripts and code is a WIP.
